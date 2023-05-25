@@ -7,9 +7,9 @@ spec:
   - name: username
     type: string
   tasks:
-    - name: hello
+    - name: task-list-files
       taskRef:
-        name: hello
+        name: task-list-files
     - name: goodbye
       runAfter:
         - hello
