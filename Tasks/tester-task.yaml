@@ -16,3 +16,4 @@ spec:
         Workspace of a single run
       optional: false
       mountPath: /tmp/workspace/
+      optional: false
