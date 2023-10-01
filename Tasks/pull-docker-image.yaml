@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: pull-image
+spec:
+  steps:
+    - name: pull
+      image: alpine
+      script: |
+        #!/bin/sh
+        docker load -i RIME_reader_image.tar
+

@@ -1,0 +1,10 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: telemetry2raw-goodbye-run
+spec:
+  pipelineRef:
+    name: telemetry2raw-goodbye
+  params:
+  - name: username
+    value: "RSLab"

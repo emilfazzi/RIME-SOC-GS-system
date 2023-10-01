@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: tester-task-run
+spec:
+  taskRef:
+    name: tester
+  workspaces:
+    - name: workspace  # this workspace name must be declared in the Task
+      persistentVolumeClaim:
+        claimName: my-nfs-pvc

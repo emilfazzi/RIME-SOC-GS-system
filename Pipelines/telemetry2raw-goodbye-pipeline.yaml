@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: telemetry2raw-goodbye
+spec:
+  params:
+  - name: username
+    type: string
+  tasks:
+    - name: pull-image
+      taskRef:
+        name: pull-image
+    - name: telemetry2raw-task
+      taskRef:
+        name: telemetry2raw
+    - name: goodbye
+      runAfter:
+        - telemetry2raw-task
+      taskRef:
+        name: goodbye
+      params:
+      - name: username
+        value: $(params.username)

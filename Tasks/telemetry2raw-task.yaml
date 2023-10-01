@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: telemetry2raw
+spec:
+  steps:
+    - name: process
+      image: emilfazzi/test_t2r_script:latest
+      script: |
+        #!/bin/sh
+        python3 scripts/tm2raw.py --input /usr/src/data --output /usr/src/data --log /usr/src/logs 
