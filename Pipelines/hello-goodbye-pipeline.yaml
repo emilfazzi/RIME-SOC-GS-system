@@ -12,7 +12,7 @@ spec:
         name: task-list-files
     - name: goodbye
       runAfter:
-        - hello
+        - task-list-files
       taskRef:
         name: goodbye
       params:
