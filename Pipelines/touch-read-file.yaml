@@ -3,9 +3,6 @@ kind: Pipeline
 metadata:
   name: touch-read-file
 spec:
-  params:
-  - name: username
-    type: string
   tasks:
     - name: tester-before
       taskRef:
@@ -28,3 +25,11 @@ spec:
         value: "/tmp/workspace/"
       runAfter:
         - tester-touch
+
+  workspaces:
+    - name: workspace
+      description: |
+        The folder where we write the message to. If no workspace
+        is provided then the message will not be written.        
+      persistentVolumeClaim:
+        claimName: my-pvc
