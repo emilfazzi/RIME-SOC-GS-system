@@ -3,16 +3,19 @@ kind: Task
 metadata:
   name: tester
 spec:
+  params:
+  - name: custom_dir
+    type: string
   steps:
     - name: process
       image: emilfazzi/tester:latest
       script: |
         #!/bin/sh
-        python3 tester.py --directory /tmp/workspace
+        python3 tester.py --directory $(params.custom_dir)
 
   workspaces:
     - name: workspace
       description: |
         Workspace of a single run
-      mountPath: /tmp/workspace/
+      mountPath: $(params.custom_dir)
       optional: false

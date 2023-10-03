@@ -19,7 +19,7 @@ def main():
     print(f"Contents of the current directory '{current_directory}':")
     list_directory_contents(current_directory)
 
-    print(f"Contents of the current directory '{current_directory}':")
+    print(f"Contents of the current directory '{custom_directory}':")
     list_directory_contents(custom_directory)
 
 

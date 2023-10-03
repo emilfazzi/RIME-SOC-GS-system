@@ -1,0 +1,29 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: hello-goodbye
+spec:
+  params:
+  - name: username
+    type: string
+  tasks:
+    - name: tester-before
+      taskRef:
+        name: tester
+      params:
+      - name: custom_dir
+        value: "/tmp/workspace/"
+
+    - name: tester-touch
+      taskRef:
+        name: tester-touch
+      runAfter: tester-before
+
+    - name: tester-post
+      taskRef:
+        name: tester
+      params:
+      - name: custom_dir
+        value: "/tmp/workspace/"
+      runAfter:
+        - tester-touch
