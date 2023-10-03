@@ -14,7 +14,7 @@ spec:
         python3 tester.py --directory $(params.custom_dir)
 
   workspaces:
-    - name: workspace
+    - name: output
       description: |
         Workspace of a single run
       mountPath: $(params.custom_dir)

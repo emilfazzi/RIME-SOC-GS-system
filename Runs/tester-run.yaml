@@ -6,5 +6,6 @@ spec:
   taskRef:
     name: tester
   workspaces:
-    - name: output  # this workspace name must be declared in the Task
-      mountPath: /tmp/workspace/ 
+    - name: workspace  # this workspace name must be declared in the Task
+      persistentVolumeClaim:
+        claimName: my-nfs-pvc
