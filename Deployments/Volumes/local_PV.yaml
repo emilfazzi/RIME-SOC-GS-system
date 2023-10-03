@@ -6,7 +6,7 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: my-local-storage
+  storageClassName: local-storage
   capacity:
     storage: 20Gi
   accessModes:
