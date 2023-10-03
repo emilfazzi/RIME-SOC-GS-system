@@ -10,12 +10,18 @@ spec:
       params:
       - name: custom_dir
         value: "/tmp/workspace/"
+      workspaces:
+        - name: output
+          workspace: pipeline-workspace
 
     - name: tester-touch
       taskRef:
         name: tester-touch
       runAfter: 
         - tester-before
+      workspaces:
+        - name: output
+          workspace: pipeline-workspace
 
     - name: tester-post
       taskRef:
@@ -25,10 +31,9 @@ spec:
         value: "/tmp/workspace/"
       runAfter:
         - tester-touch
+      workspaces:
+        - name: output
+          workspace: pipeline-workspace
 
   workspaces:
-    - name: workspace
-      description: |
-        The folder where we write the message to. If no workspace
-        is provided then the message will not be written.        
-      mountPath: /home/emilfazzi/workspace
+    - name: pipeline-workspace

@@ -11,7 +11,7 @@ spec:
         touch /tmp/workspace/example_file
 
   workspaces:
-    - name: workspace
+    - name: output
       description: |
         Workspace of a single run
       mountPath: /tmp/workspace/
