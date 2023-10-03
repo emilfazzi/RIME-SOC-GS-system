@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: test-file-workspace
+spec:
+  pipelineRef:
+    name: touch-read-file
+  workspaces:
+  - name: pipeline-workspace
+    persistentVolumeClaim:
+      claimName: my-pvc
