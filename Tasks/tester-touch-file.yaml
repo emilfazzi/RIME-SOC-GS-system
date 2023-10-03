@@ -4,7 +4,7 @@ metadata:
   name: tester-touch
 spec:
   steps:
-    - name: touch file in workspace
+    - name: tester-touch
       image: ubuntu
       script: |
         #!/bin/sh
