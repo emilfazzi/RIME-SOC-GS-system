@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: hello-goodbye
+  name: touch-read-file
 spec:
   params:
   - name: username
