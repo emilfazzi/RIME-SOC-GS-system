@@ -17,7 +17,8 @@ spec:
     - name: tester-touch
       taskRef:
         name: tester-touch
-      runAfter: tester-before
+      runAfter: 
+        - tester-before
 
     - name: tester-post
       taskRef:
