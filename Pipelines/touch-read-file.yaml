@@ -31,5 +31,4 @@ spec:
       description: |
         The folder where we write the message to. If no workspace
         is provided then the message will not be written.        
-      persistentVolumeClaim:
-        claimName: my-pvc
+      mountPath: /home/emilfazzi/workspace
