@@ -47,7 +47,7 @@ spec:
         - tester-post
       workspaces:
         - name: output
-          workspace: myworkspace
+          workspace: pipeline-io
       
 
   workspaces:
