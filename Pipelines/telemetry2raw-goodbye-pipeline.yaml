@@ -4,16 +4,28 @@ metadata:
   name: telemetry2raw-goodbye
 spec:
   tasks:
+    - name: tester-pre
+      taskRef:
+        name: tester
+      params:
+      - name: custom_dir
+        value: "/tmp/workspace/data"
+      runAfter:
+        - telemetry2raw-task
+      workspaces:
+        - name: output
+          workspace: pipeline-workspace
+
     - name: telemetry2raw-task
       taskRef:
         name: telemetry2raw
       params:
         - name: input_dir
-          value: "workspace/data"
+          value: "/tmp/workspace/data"
         - name: output_dir
-          value: "workspace/raw"
+          value: "/tmp/workspace/raw"
         - name: log_dir
-          value: "workspace/raw"
+          value: "/tmp/workspace/raw"
       workspaces:
         - name: output
           workspace: pipeline-workspace
