@@ -85,6 +85,8 @@ def main():
     for fileName in files: 
 
         loo.debug(executableID+'Reading file: ' + fileName.as_posix())
+        loo.debug(executableID+'Reading file (basename): ' + os.path.basename(fileName))
+        loo.debug(executableID+'Reading file (basename as_posix): ' + os.path.basename(fileName.as_posix()))
         rawData = RIMERaw(fileName.as_posix(),processors=processors,exec=executableID)
 
         pickle.dump( rawData, open( str(fileName) + "_raw.pkl", "wb" ) )
