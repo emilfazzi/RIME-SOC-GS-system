@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: initialize-telemetry-workspace
+spec:
+  params:
+  - name: workspace_path
+    type: string
+  - name: telemetry_filename
+    type: string
+
+  steps:
+    - name: initialize-telemetry-workspace
+      image: alpine
+      script: |
+        #!/bin/sh
+        mkdir $(params.workspace_path)
+        cp $(params.telemetry_filename) $(params.workspace_path)
+
+  workspaces:
+    - name: output
+      description: |
+        Workspace of a single run
+      mountPath: /tmp/workspace/
+      optional: false
