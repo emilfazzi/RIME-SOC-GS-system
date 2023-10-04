@@ -12,7 +12,7 @@ spec:
     type: string
   steps:
     - name: process
-      image: emilfazzi/test_t2r_script:latest
+      image: emilfazzi/telemetry2raw:latest
       script: |
         #!/bin/sh
         python3 tm2raw.py --input $(params.input_dir) --output $(params.output_dir) --log $(params.log_dir) 
