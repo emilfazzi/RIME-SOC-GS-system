@@ -4,9 +4,9 @@ metadata:
   name: initialize-telemetry-workspace
 spec:
   params:
-  - name: workspace_path
-    type: string
   - name: telemetry_filename
+    type: string
+  - name: mount_path
     type: string
 
   steps:
@@ -14,12 +14,19 @@ spec:
       image: alpine
       script: |
         #!/bin/sh
-        mkdir $(params.workspace_path)
-        cp $(params.telemetry_filename) $(params.workspace_path)
+        mkdir $(params.mount_path)/telemetry/
+        mkdir $(params.mount_path)/raw/
+        mkdir $(params.mount_path)/quicklook/
+        mkdir $(params.mount_path)/logs/
+
+        cp /root/workspace/$(params.telemetry_filename) $(params.mount_path)/telemetry/
 
   workspaces:
-    - name: output
+    - name: input
       description: |
         Workspace of a single run
-      mountPath: /tmp/workspace/
+      mountPath: /root/workspace/
       optional: false
+
+    - name: local-workspace
+      mountPath: $(params.mount_path)

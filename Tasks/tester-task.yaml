@@ -8,10 +8,10 @@ spec:
     type: string
   steps:
     - name: process
-      image: emilfazzi/tester:latest
+      image: alpine
       script: |
         #!/bin/sh
-        python3 tester.py --directory $(params.custom_dir)
+        ls -alR $(params.custom_dir)
 
   workspaces:
     - name: output

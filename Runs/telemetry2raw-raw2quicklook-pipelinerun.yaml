@@ -8,8 +8,17 @@ spec:
 
   params: 
   - name: telemetry_filename
-    value: "RIM1_38000000_2023.172.15.11.58.502"
+    value: "RIM1_38000000_2023.132.14.39.20.567"
   workspaces:
-  - name: pipeline-workspace
+  - name: pipeline-io
     persistentVolumeClaim:
       claimName: my-pvc
+
+  - name: myworkspace # this workspace name must be declared in the Pipeline
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+          - ReadWriteOnce # access mode may affect how you can use this volume in parallel tasks
+        resources:
+          requests:
+            storage: 1Gi

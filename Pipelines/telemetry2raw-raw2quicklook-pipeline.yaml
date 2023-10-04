@@ -12,50 +12,46 @@ spec:
       taskRef:
         name: initialize-telemetry-workspace
       params:
-      - name: workspace_path
-        value: "/tmp/workspace/$(context.pipelinerun.uid)/"
       - name: telemetry_filename
         value: $(params.telemetry_filename)
+      - name: mount_path
+        value: "/root/local-workspace/"
+        
+      workspaces:
+        - name: input
+          workspace: pipeline-io
+        - name: local-workspace
+          workspace: myworkspace
+
+    - name: tester-post
+      taskRef:
+        name: tester
+      params:
+      - name: custom_dir
+        value: "/tmp/workspace/"
+      runAfter:
+        - initialize-telemetry-workspace
       workspaces:
         - name: output
-          workspace: pipeline-workspace
+          workspace: myworkspace
 
     - name: telemetry2raw-task
       taskRef:
         name: telemetry2raw
       params:
         - name: input_dir
-          value: "/tmp/workspace/data"
+          value: "telemetry/"
         - name: output_dir
-          value: "/tmp/workspace/raw"
+          value: "raw/"
         - name: log_dir
-          value: "/tmp/workspace/raw"
+          value: "logs/"
       runAfter:
-        - initialize
+        - tester-post
       workspaces:
         - name: output
-          workspace: pipeline-workspace
+          workspace: myworkspace
       
-    - name: tester-post
-      taskRef:
-        name: tester
-      params:
-      - name: custom_dir
-        value: "/tmp/workspace/raw"
-      runAfter:
-        - telemetry2raw-task
-      workspaces:
-        - name: output
-          workspace: pipeline-workspace
-
-    - name: goodbye
-      runAfter:
-        - telemetry2raw-task
-      taskRef:
-        name: goodbye
-      params:
-      - name: username
-        value: "CIAO"
 
   workspaces:
-    - name: pipeline-workspace
+    - name: pipeline-io
+    - name: myworkspace
