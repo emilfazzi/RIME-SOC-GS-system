@@ -10,7 +10,7 @@ spec:
   tasks:
     - name: initialize
       taskRef:
-        name: testinitialize-telemetry-workspaceer
+        name: testinitialize-telemetry-workspace
       params:
       - name: workspace_path
         value: "/tmp/workspace/$(context.pipelinerun.uid)/"
