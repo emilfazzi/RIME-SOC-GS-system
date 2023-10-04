@@ -3,16 +3,33 @@ kind: Pipeline
 metadata:
   name: telemetry2raw-goodbye
 spec:
-  params:
-  - name: username
-    type: string
   tasks:
-    - name: pull-image
-      taskRef:
-        name: pull-image
     - name: telemetry2raw-task
       taskRef:
         name: telemetry2raw
+      params:
+        - name: input_dir
+          value: "workspace/data"
+        - name: output_dir
+          value: "workspace/raw"
+        - name: log_dir
+          value: "workspace/raw"
+      workspaces:
+        - name: output
+          workspace: pipeline-workspace
+      
+    - name: tester-post
+      taskRef:
+        name: tester
+      params:
+      - name: custom_dir
+        value: "/tmp/workspace/raw"
+      runAfter:
+        - telemetry2raw-task
+      workspaces:
+        - name: output
+          workspace: pipeline-workspace
+
     - name: goodbye
       runAfter:
         - telemetry2raw-task
@@ -20,4 +37,7 @@ spec:
         name: goodbye
       params:
       - name: username
-        value: $(params.username)
+        value: "CIAO"
+
+  workspaces:
+    - name: pipeline-workspace

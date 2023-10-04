@@ -3,9 +3,16 @@ kind: Task
 metadata:
   name: telemetry2raw
 spec:
+  params:
+  - name: input_dir
+    type: string
+  - name: output_dir
+    type: string
+  - name: log_dir
+    type: string
   steps:
     - name: process
       image: emilfazzi/test_t2r_script:latest
       script: |
         #!/bin/sh
-        python3 scripts/tm2raw.py --input /usr/src/data --output /usr/src/data --log /usr/src/logs 
+        python3 scripts/tm2raw.py --input $(params.input_dir) --output $(params.output_dir) --log $(params.log_dir) 

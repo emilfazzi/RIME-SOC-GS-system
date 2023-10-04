@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: telemetry2raw-goodbye-taskrun
+spec:
+  pipelineRef:
+    name: telemetry2raw-goodbye
+  workspaces:
+  - name: pipeline-workspace
+    persistentVolumeClaim:
+      claimName: my-pvc
+
