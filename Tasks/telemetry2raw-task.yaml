@@ -15,7 +15,7 @@ spec:
       image: emilfazzi/test_t2r_script:latest
       script: |
         #!/bin/sh
-        python3 scripts/tm2raw.py --input $(params.input_dir) --output $(params.output_dir) --log $(params.log_dir) 
+        python3 tm2raw.py --input $(params.input_dir) --output $(params.output_dir) --log $(params.log_dir) 
   
   workspaces:
     - name: output
