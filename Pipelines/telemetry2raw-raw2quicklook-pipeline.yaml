@@ -29,7 +29,7 @@ spec:
         - name: log_dir
           value: "/tmp/workspace/raw"
       runAfter:
-        - tester-pre
+        - initialize
       workspaces:
         - name: output
           workspace: pipeline-workspace
