@@ -30,7 +30,7 @@ spec:
       - name: custom_dir
         value: "/tmp/workspace/"
       runAfter:
-        - initialize-telemetry-workspace
+        - initialize
       workspaces:
         - name: output
           workspace: myworkspace
