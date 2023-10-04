@@ -19,14 +19,9 @@ spec:
         mkdir $(params.mount_path)/quicklook/
         mkdir $(params.mount_path)/logs/
 
-        # cp /root/workspace/$(params.telemetry_filename) $(params.mount_path)/telemetry/
+        cp $(params.mount_path)/data/$(params.telemetry_filename) $(params.mount_path)/telemetry/
 
   workspaces:
-    # - name: input
-    #   description: |
-    #     Workspace of a single run
-    #   mountPath: /root/workspace/
-    #   optional: false
 
     - name: local-workspace
       mountPath: $(params.mount_path)

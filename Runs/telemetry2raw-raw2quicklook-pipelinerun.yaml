@@ -14,11 +14,3 @@ spec:
     persistentVolumeClaim:
       claimName: my-pvc
 
-  - name: myworkspace # this workspace name must be declared in the Pipeline
-    volumeClaimTemplate:
-      spec:
-        accessModes:
-          - ReadWriteOnce # access mode may affect how you can use this volume in parallel tasks
-        resources:
-          requests:
-            storage: 1Gi

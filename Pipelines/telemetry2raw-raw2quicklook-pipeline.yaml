@@ -18,10 +18,8 @@ spec:
         value: "/root/local-workspace/"
         
       workspaces:
-        # - name: input
-        #   workspace: pipeline-io
         - name: local-workspace
-          workspace: myworkspace
+          workspace: pipeline-io
 
     - name: tester-post
       taskRef:
@@ -33,7 +31,7 @@ spec:
         - initialize
       workspaces:
         - name: output
-          workspace: myworkspace
+          workspace: pipeline-io
 
     - name: telemetry2raw-task
       taskRef:
@@ -54,4 +52,3 @@ spec:
 
   workspaces:
     - name: pipeline-io
-    - name: myworkspace
