@@ -18,8 +18,8 @@ spec:
         value: "/root/local-workspace/"
         
       workspaces:
-        - name: input
-          workspace: pipeline-io
+        # - name: input
+        #   workspace: pipeline-io
         - name: local-workspace
           workspace: myworkspace
 
