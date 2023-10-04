@@ -10,8 +10,6 @@ spec:
       params:
       - name: custom_dir
         value: "/tmp/workspace/data"
-      runAfter:
-        - telemetry2raw-task
       workspaces:
         - name: output
           workspace: pipeline-workspace
@@ -26,6 +24,8 @@ spec:
           value: "/tmp/workspace/raw"
         - name: log_dir
           value: "/tmp/workspace/raw"
+      runAfter:
+        - tester-pre
       workspaces:
         - name: output
           workspace: pipeline-workspace
