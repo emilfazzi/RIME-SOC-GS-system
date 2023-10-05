@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: telemetry2quicklook-nfs-pipeline
+spec:
+  pipelineRef:
+    name: telemetry2raw-raw2quicklook
+
+  params: 
+  - name: telemetry_filename
+    value: "RIM1_38000000_2023.132.14.39.20.567"
+  workspaces:
+  - name: pipeline-io
+    persistentVolumeClaim:
+      claimName: my-pvc
+
