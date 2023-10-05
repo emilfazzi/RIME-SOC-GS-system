@@ -34,3 +34,14 @@
 - Access the ArgoCD dashboard and create two apps for the subfolders `Tekton` and `Deployments`, selecting `DIRECTORY RECURSE` as parameter and sync the two applications. This will deploy all the required configuration.
 
 By accessing the tekton dashboard, all the tasks and pipelines should appear for the execution
+
+
+<h2> Current status:</h2>
+
+The current implementation uses a NFS server located on one node (to be configured). The file Deployments/Volumes/NFS_SC.yaml should be configured by changong `share` and `server` parameters with the personal environment.
+
+The pipeline `telemetry2raw-raw2quicklook` takes the telemetry passed as input, that should be located in `data` inside the mounted storage. The pipeline will provide the raw file, the quicklook products and the logs of the steps in the dedicated folders that will be created if not present.
+
+<h2> Future implementations:</h2>
+
+Better management of the volumes
