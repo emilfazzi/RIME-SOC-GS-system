@@ -13,9 +13,6 @@ spec:
   steps:
     - name: process
       image: emilfazzi/raw2quicklook:latest
-      resources:
-       limits:
-         cpu: 2000m
       script: |
         #!/bin/sh
         pwd

@@ -13,6 +13,9 @@ spec:
   steps:
     - name: process
       image: emilfazzi/telemetry2raw:latest
+      resources:
+       limits:
+         cpu: 2000m
       script: |
         #!/bin/sh
         python3 tm2raw.py --input /tmp/workspace/$(params.input_dir) --output /tmp/workspace/$(params.output_dir) --log /tmp/workspace/$(params.log_dir) 
