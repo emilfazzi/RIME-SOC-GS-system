@@ -12,7 +12,10 @@ spec:
     type: string
   steps:
     - name: process
-      image: emilfazzi/raw2quicklook:v1
+      image: emilfazzi/raw2quicklook:latest
+      resources:
+       limits:
+         cpu: 2000m
       script: |
         #!/bin/sh
         pwd
