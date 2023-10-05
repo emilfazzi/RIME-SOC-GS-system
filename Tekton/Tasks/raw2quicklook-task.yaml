@@ -12,7 +12,7 @@ spec:
     type: string
   steps:
     - name: process
-      image: emilfazzi/telemetry2raw:latest
+      image: emilfazzi/raw2quicklook:latest
       script: |
         #!/bin/sh
         python3 raw2quicklook.py --input /tmp/workspace/$(params.input_dir) --output /tmp/workspace/$(params.output_dir) --log /tmp/workspace/$(params.log_dir) 
