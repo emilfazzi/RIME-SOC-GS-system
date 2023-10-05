@@ -44,4 +44,6 @@ The pipeline `telemetry2raw-raw2quicklook` takes the telemetry passed as input, 
 
 <h2> Future implementations:</h2>
 
-Better management of the volumes
+- Better management of the volumes: create a dedicated PVC for every pipeline
+- Better resource management: the tm2raw.py script is using all the available computational resources. It may be better to limit the utilization of the script in order to ensure a good parallelization since the script should process only one telemetry at execution
+- Create a trigger

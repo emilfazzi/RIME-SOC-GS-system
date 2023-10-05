@@ -15,6 +15,8 @@ spec:
       image: emilfazzi/raw2quicklook:v1
       script: |
         #!/bin/sh
+        pwd
+        ls -alR /usr/src/
         python3 raw2quicklook.py --input /tmp/workspace/$(params.input_dir) --output /tmp/workspace/$(params.output_dir) --log /tmp/workspace/$(params.log_dir) 
   
   workspaces:
