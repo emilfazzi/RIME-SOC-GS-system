@@ -21,17 +21,17 @@ spec:
         - name: local-workspace
           workspace: pipeline-io
 
-    - name: tester-post
-      taskRef:
-        name: tester
-      params:
-      - name: custom_dir
-        value: "/tmp/workspace/"
-      runAfter:
-        - initialize
-      workspaces:
-        - name: output
-          workspace: pipeline-io
+    # - name: tester-post
+    #   taskRef:
+    #     name: tester
+    #   params:
+    #   - name: custom_dir
+    #     value: "/tmp/workspace/"
+    #   runAfter:
+    #     - initialize
+    #   workspaces:
+    #     - name: output
+    #       workspace: pipeline-io
 
     - name: telemetry2raw-task
       taskRef:
@@ -44,7 +44,23 @@ spec:
         - name: log_dir
           value: "logs/"
       runAfter:
-        - tester-post
+        - initialize
+      workspaces:
+        - name: output
+          workspace: pipeline-io
+
+    - name: raw2quicklook-task
+      taskRef:
+        name: raw2quicklook
+      params:
+        - name: input_dir
+          value: "raw/"
+        - name: output_dir
+          value: "quicklook/"
+        - name: log_dir
+          value: "logs/"
+      runAfter:
+        - telemetry2raw-task
       workspaces:
         - name: output
           workspace: pipeline-io

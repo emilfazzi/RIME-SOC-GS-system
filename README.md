@@ -31,4 +31,6 @@
     microk8s kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
     ```
 
-- Access on ArgoCD 
+- Access the ArgoCD dashboard and create two apps for the subfolders `Tekton` and `Deployments`, selecting `DIRECTORY RECURSE` as parameter and sync the two applications. This will deploy all the required configuration.
+
+By accessing the tekton dashboard, all the tasks and pipelines should appear for the execution

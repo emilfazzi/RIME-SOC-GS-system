@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: raw2quicklook
+spec:
+  params:
+  - name: input_dir
+    type: string
+  - name: output_dir
+    type: string
+  - name: log_dir
+    type: string
+  steps:
+    - name: process
+      image: emilfazzi/telemetry2raw:latest
+      script: |
+        #!/bin/sh
+        python3 raw2quicklook --input /tmp/workspace/$(params.input_dir) --output /tmp/workspace/$(params.output_dir) --log /tmp/workspace/$(params.log_dir) 
+  
+  workspaces:
+    - name: output
+      description: |
+        Workspace of a single run
+      mountPath: /tmp/workspace
+      optional: false
