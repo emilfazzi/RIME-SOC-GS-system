@@ -1,0 +1,4 @@
+RIM_01.2
+Rx Only operation for NECP. 10x (30s data acq + 30s wait)
+1MHz band but 400us in order to have a better spectral resolution
+3 levels of attenuation (30 15 0), 4 active row each level

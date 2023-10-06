@@ -1,0 +1,2 @@
+RIM_01.2
+Rx Only operation for NECP. 10x (30s data acq + 30s wait)

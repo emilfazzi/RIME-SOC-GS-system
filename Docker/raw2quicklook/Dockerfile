@@ -7,7 +7,7 @@ RUN apt-get update
 RUN apt install -y python3-pip
 RUN pip install --upgrade pip
 
-COPY * ./
+COPY . ./
 
 RUN pip3 install -r requirements.txt
 
