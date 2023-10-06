@@ -3,6 +3,9 @@ kind: Pipeline
 metadata:
   name: touch-read-file
 spec:
+  params:
+  - name: pipelineRun_name
+    type: string
   tasks:
     - name: tester-before
       taskRef:
@@ -10,6 +13,8 @@ spec:
       params:
       - name: custom_dir
         value: "/tmp/workspace/"
+      - name: message
+        value: $(params.pipelineRun_name)
       workspaces:
         - name: output
           workspace: pipeline-workspace
@@ -29,6 +34,8 @@ spec:
       params:
       - name: custom_dir
         value: "/tmp/workspace/"
+      - name: messgage
+        value: "test"
       runAfter:
         - tester-touch
       workspaces:

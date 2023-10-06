@@ -6,6 +6,8 @@ spec:
   params:
   - name: telemetry_filename
     type: string
+  - name: pipelineRun_name
+    type: string
 
   tasks:
     - name: initialize
@@ -16,22 +18,11 @@ spec:
         value: $(params.telemetry_filename)
       - name: mount_path
         value: "/root/local-workspace/"
-        
+      - name: pipelineRun_name
+        value: $(params.pipelineRun_name)
       workspaces:
         - name: local-workspace
           workspace: pipeline-io
-
-    # - name: tester-post
-    #   taskRef:
-    #     name: tester
-    #   params:
-    #   - name: custom_dir
-    #     value: "/tmp/workspace/"
-    #   runAfter:
-    #     - initialize
-    #   workspaces:
-    #     - name: output
-    #       workspace: pipeline-io
 
     - name: telemetry2raw-task
       taskRef:
@@ -43,6 +34,8 @@ spec:
           value: "raw/"
         - name: log_dir
           value: "logs/"
+        - name: pipelineRun_name
+          value: $(params.pipelineRun_name)
       runAfter:
         - initialize
       workspaces:
@@ -59,6 +52,8 @@ spec:
           value: "quicklook/"
         - name: log_dir
           value: "logs/"
+        - name: pipelineRun_name
+          value: $(params.pipelineRun_name)
       runAfter:
         - telemetry2raw-task
       workspaces:

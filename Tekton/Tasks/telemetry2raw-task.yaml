@@ -10,15 +10,18 @@ spec:
     type: string
   - name: log_dir
     type: string
+  - name: pipelineRun_name
+    type: string
   steps:
     - name: process
       image: emilfazzi/telemetry2raw:latest
       resources:
        limits:
-         cpu: 2000m
+         cpu: 6000m
+
       script: |
         #!/bin/sh
-        python3 tm2raw.py --input /tmp/workspace/$(params.input_dir) --output /tmp/workspace/$(params.output_dir) --log /tmp/workspace/$(params.log_dir) 
+        python3 tm2raw.py --input /tmp/workspace/$(params.pipelineRun_name)/$(params.input_dir) --output /tmp/workspace/$(params.pipelineRun_name)/$(params.output_dir) --log /tmp/workspace/$(params.pipelineRun_name)/$(params.log_dir) 
   
   workspaces:
     - name: output

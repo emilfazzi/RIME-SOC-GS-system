@@ -6,11 +6,15 @@ spec:
   params:
   - name: custom_dir
     type: string
+  - name: message
+    type: string
+    default: "default"
   steps:
     - name: process
       image: alpine
       script: |
         #!/bin/sh
+        echo "$(params.message)"
         ls -alR $(params.custom_dir)
 
   workspaces:

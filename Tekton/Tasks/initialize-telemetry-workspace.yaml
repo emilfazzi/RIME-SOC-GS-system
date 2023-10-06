@@ -8,18 +8,21 @@ spec:
     type: string
   - name: mount_path
     type: string
+  - name: pipelineRun_name
+    type: string
 
   steps:
     - name: initialize-telemetry-workspace
       image: alpine
       script: |
         #!/bin/sh
-        mkdir $(params.mount_path)/telemetry/
-        mkdir $(params.mount_path)/raw/
-        mkdir $(params.mount_path)/quicklook/
-        mkdir $(params.mount_path)/logs/
 
-        cp $(params.mount_path)/data/$(params.telemetry_filename) $(params.mount_path)/telemetry/
+        mkdir -p $(params.mount_path)/$(params.pipelineRun_name)/telemetry/
+        mkdir -p $(params.mount_path)/$(params.pipelineRun_name)/raw/
+        mkdir -p $(params.mount_path)/$(params.pipelineRun_name)/quicklook/
+        mkdir -p $(params.mount_path)/$(params.pipelineRun_name)/logs/
+
+        cp $(params.mount_path)/data/$(params.telemetry_filename) $(params.mount_path)/$(params.pipelineRun_name)/telemetry/
 
   workspaces:
 

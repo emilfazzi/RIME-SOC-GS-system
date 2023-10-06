@@ -1,16 +1,18 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  name: test-file-workspace
+  name: telemetry2quicklook-local-pipeline
 spec:
   pipelineRef:
-    name: touch-read-file
+    name: telemetry2raw-raw2quicklook
 
   params: 
+  - name: telemetry_filename
+    value: "RIM1_38000000_2023.132.14.39.20.567"
   - name: pipelineRun_name
     value: $(context.pipelineRun.name)
-
   workspaces:
-  - name: pipeline-workspace
+  - name: pipeline-io
     persistentVolumeClaim:
       claimName: my-pvc
+

@@ -10,14 +10,14 @@ spec:
     type: string
   - name: log_dir
     type: string
+  - name: pipelineRun_name
+    type: string
   steps:
     - name: process
       image: emilfazzi/raw2quicklook:latest
       script: |
         #!/bin/sh
-        pwd
-        ls -alR /usr/src/
-        python3 raw2quicklook.py --input /tmp/workspace/$(params.input_dir) --output /tmp/workspace/$(params.output_dir) --log /tmp/workspace/$(params.log_dir) 
+        python3 raw2quicklook.py --input /tmp/workspace/$(params.pipelineRun_name)/$(params.input_dir) --output /tmp/workspace/$(params.pipelineRun_name)/$(params.output_dir) --log /tmp/workspace/$(params.pipelineRun_name)/$(params.log_dir) 
   
   workspaces:
     - name: output
